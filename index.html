@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Selection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+
+<body>
+    <div>
+        <div style="text-align: center;" class="mainContent">
+            <h1>Ease<span>Of</span>Learning</h1>
+            <p>Thank you for your patience. <br>Make payment for enrolling into this course.</p>
+        </div>
+
+        <div class="container">
+            <div class="title">
+                <h4>Select a <span style="color: #6064b6">Payment</span> method</h4>
+            </div>
+
+            <form action="#">
+                <input type="radio" name="payment" id="paytm">
+                <input type="radio" name="payment" id="phonepe">
+                <input type="radio" name="payment" id="googlepay">
+                <input type="radio" name="payment" id="amex">
+
+                <div class="category">
+                    <label for="paytm" class="visaMethod">
+                        <div class="imgName">
+                            <div class="imgContainer visa">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Paytm_logo.jpg"
+                                    alt="Paytm Logo">
+                            </div>
+                            <span class="name">Paytm</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+
+                    <label for="phonepe" class="mastercardMethod">
+                        <div class="imgName">
+                            <div class="imgContainer mastercard">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh5USKxpCfFcalXzrIQqJsYFpWA893cDsikYurB2Iy9Q&s"
+                                    alt="Phonepe Logo">
+                            </div>
+                            <span style="margin-top: 5px;" class="name">Phonepe</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+
+                    <label for="googlepay" class="paypalMethod">
+                        <div class="imgName">
+                            <div class="imgContainer paypal">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-pay-icon.png"
+                                    alt="Googlepay Logo">
+                            </div>
+                            <span style="margin-top: 7px;" class="name">Googlepay</span>
+                        </div>
+                        <span class="check"><i class="fa-solid fa-circle-check" style="color: #6064b6;"></i></span>
+                    </label>
+                </div>
+            </form>
+
+
+            <!-- Paytm Modal -->
+            <div id="paytmModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Payment method selected: Paytm</p>
+                    <img src="https://pwebassets.paytm.com/commonwebassets/paytmweb/header/images/logo.svg" alt="paytm"
+                        style="width: 200px; margin-top: 20px;">
+                    <div class="qrcode">
+                        <!-- Coupon Form -->
+                        <div id="paytmCouponForm">
+                            <input type="text" id="paytmCouponCode" placeholder="Enter coupon code" autocomplete="off"> <br>
+                            <button class="generateButton"
+                                onclick="generateQRCode('paytmQRCode', 'paytmCouponCode', 'Paytm')">
+                                Apply Coupon & Generate QR Code
+                            </button>
+                            <div id="paytmQRCode"></div>
+                            <p class="scanPay">Scan & Pay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PhonePe Modal -->
+            <div id="phonepeModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Payment method selected: PhonePe</p>
+                    <img src="https://static.digit.in/default/phonepe-650-017c8c6529.png" alt="PhonePe"
+                        style="width: 200px; margin-top: 20px;">
+                    <div class="qrcode">
+
+                        <!-- Coupon Form -->
+                        <div id="phonepeCouponForm">
+                            <input type="text" id="phonepeCouponCode" placeholder="Enter coupon code" autocomplete="off"> <br>
+                            <button class="generateButton"
+                                onclick="generateQRCode('phonepeQRCode', 'phonepeCouponCode', 'PhonePe')">
+                                Apply Coupon and Generate QR Code
+                            </button>
+                            <div id="phonepeQRCode"></div>
+                            <p class="scanPay">Scan & Pay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GooglePay Modal -->
+            <div id="googlepayModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Payment method selected: GooglePay</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Pay_Logo_%282020%29.svg/2560px-Google_Pay_Logo_%282020%29.svg.png"
+                        alt="googlepay" style="width: 200px; margin-top: 20px;">
+                    <div class="qrcode">
+                        <!-- Coupon Form -->
+                        <div id="googlepayCouponForm">
+                            <input type="text" id="googlepayCouponCode" placeholder="Enter coupon code" autocomplete="off"> <br>
+                            <button class="generateButton"
+                                onclick="generateQRCode('googlepayQRCode', 'googlepayCouponCode', 'GooglePay')">
+                                Apply Coupon and Generate QR Code
+                            </button>
+                            <div id="googlepayQRCode"></div>
+                            <p class="scanPay">Scan & Pay</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 EaseOfLearning. All rights reserved.</p>
+        </footer>
+    </div>
+    <script>
+        // Get the modal elements
+        const paytmModal = document.getElementById('paytmModal');
+        const phonepeModal = document.getElementById('phonepeModal');
+        const googlepayModal = document.getElementById('googlepayModal');
+
+        // Get the close button elements
+        const closeBtns = document.getElementsByClassName('close');
+
+        // Get the payment method input elements
+        const paytmInput = document.getElementById('paytm');
+        const phonepeInput = document.getElementById('phonepe');
+        const googlepayInput = document.getElementById('googlepay');
+
+        // When the user selects a payment method, display the corresponding modal and generate the default QR code
+        paytmInput.addEventListener('change', () => {
+            paytmModal.style.display = 'block';
+            generateQRCode('paytmQRCode', 'paytmCouponCode', 'Paytm');
+        });
+
+        phonepeInput.addEventListener('change', () => {
+            phonepeModal.style.display = 'block';
+            generateQRCode('phonepeQRCode', 'phonepeCouponCode', 'PhonePe');
+        });
+
+        googlepayInput.addEventListener('change', () => {
+            googlepayModal.style.display = 'block';
+            generateQRCode('googlepayQRCode', 'googlepayCouponCode', 'GooglePay');
+        });
+
+        // When the user clicks on a close button, close the modal
+        Array.from(closeBtns).forEach(btn => {
+            btn.onclick = function () {
+                paytmModal.style.display = 'none';
+                phonepeModal.style.display = 'none';
+                googlepayModal.style.display = 'none';
+            };
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == paytmModal) {
+                paytmModal.style.display = 'none';
+            } else if (event.target == phonepeModal) {
+                phonepeModal.style.display = 'none';
+            } else if (event.target == googlepayModal) {
+                googlepayModal.style.display = 'none';
+            }
+        };
+
+
+
+        // Function to generate QR Code based on selected payment method and coupon code
+        function generateQRCode(qrCodeId, couponCodeId, paymentMethod) {
+            const qrCodeContainer = document.getElementById(qrCodeId);
+            qrCodeContainer.classList.add('qr-code-container');
+            const couponCodeInput = document.getElementById(couponCodeId); // Get the coupon code input field
+            const couponCode = couponCodeInput.value;
+            let amount = 599; // Default amount
+            if (couponCode === 'MAGGIEEASEOL499') {
+                amount = 499; // Discounted amount
+                alert(`Coupon applied,\n now scan & pay with \n ${paymentMethod}`);
+                couponCodeInput.value = ''; // Clear the input field after successful coupon application
+            }
+
+            let upiID = '7989814588@paytm'; // Replace with actual UPI ID
+            if (paymentMethod === 'Paytm') {
+                upiID = '7989814588@paytm';
+            } else if (paymentMethod === 'PhonePe') {
+                upiID = '7989814588@paytm'; // Replace with actual PhonePe UPI ID
+            } else if (paymentMethod === 'GooglePay') {
+                upiID = '7989814588@paytm'; // Replace with actual GooglePay UPI ID
+            }
+
+            const qrData = `upi://pay?pa=${upiID}&pn=your-name&am=${amount}&cu=INR`;
+
+            qrCodeContainer.innerHTML = ''; // Clear previous QR code
+            new QRCode(qrCodeContainer, {
+                text: qrData,
+                title: ''
+            });
+
+            // Ensure the corresponding container is also updated
+            const qrImageContainerId = qrCodeId + 'ImageContainer';
+            const qrImageContainer = document.getElementById(qrImageContainerId);
+
+            qrImageContainer.innerHTML = ''; // Clear previous QR code
+            new QRCode(qrImageContainer, {
+                text: qrData
+            });
+
+
+        }
+    </script>
+
+
+</body>
+
+</html>
